@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html >
+<head >
+    
+    <script type="text/javascript">
+
+        function validateForm() {
+            //var regexp = new RegExp()
+            var x = document.forms["myForm"]["fname"].value;
+            var dt = document.forms["myForm"]["dob"].value;
+             var fsmt = document.forms["myForm"]["fsm"].value;
+             var tel = document.forms["myForm"]["tel"].value;
+             var name = document.forms["myForm"]["nname"].value;
+             var add = document.forms["myForm"]["address"].value;
+             var iamt = document.forms["myForm"]["iamt"].value;
+             var rege = new RegExp(/^[a-zA-Z\s]*$/);
+             var today = new Date();
+             var ipdate = new Date(dt);
+             var int_amt = parseInt(iamt, 10);
+
+
+             if (x == "")
+             {
+                alert("Name must be filled out");
+               return false;
+            }
+           else if (!rege.test(x))
+            {
+                alert("Name must be made of Character and Spaces");
+                return false;
+            }
+           
+           else if (dt == "") 
+            {
+                alert("Fill the Date of Birth");
+                return false;
+           }
+          else  if (ipdate > today) {
+                alert("DOB must be a past date");
+                return false;
+            }
+          else  if (fsmt == "") {
+                alert("Father/Spouse name must be filled");
+                return false;
+          }
+          else if (!rege.test(fsmt)) {
+              alert("Name must be made of Character and Spaces");
+              return false;
+          }
+          else  if (tel == "") {
+                alert("Fill the Contact Detail");
+               return false;
+          }
+          else if (isNaN(tel)) {
+              alert("Contact detail must be number");
+              return false;
+          }
+          else  if (name == "") {
+                alert("Nominee Name must be filled out");
+                return false;
+          }
+          else if (!rege.test(name)) {
+              alert("Name must be made of Character and Spaces");
+              return false;
+          }
+         else   if (iamt == "") {
+                alert("Fill the Initial amount");
+                return false;
+            }
+           
+          else  if(isNaN(iamt))
+            {
+                alert ("Initial amount must be number");
+              return false;
+            }
+          else  if(int_amt<500|| int_amt>100000)
+            {
+                alert("Initial amount must be between 500 and 100000");
+                return false;
+            }
+
+         else   if (add == "") {
+                alert("Fill the nominee Address");
+                return false;
+            }
+}
+    </script>
+</head>
+
+<body align="center">
+    <h1>Account Opening</h1>
+    <h3>Generate account access details</h3>
+    <form name="myForm" action="/" onsubmit="return validateForm()" method="post">
+
+        Name <input type="text" name="fname" /><br /><br />
+        Date of Birth  <input type="date" name="dob" /><br /><br />
+        Father's name / spouse name  <input type="text" name="fsm" /><br /><br />
+        Gender  <input type="radio" name="sgender" value="male" checked />Male
+        <input type="radio" name="sgender" value="female" />Female
+
+        <br /><br />
+        Marital Status  <select>
+            <option Value="single">Single</option>
+            <option Value="Married">Married</option>
+        </select><br /><br />
+        contact detail  <input type="tel" name="tel" /><br /><br />
+        Nominee Name  <input type="text" name="nname" /><br /><br />
+        Nominee Address  <input type="text" name="address" /><br /><br />
+        Account type  <select>
+            <option Value="Savings">Savings</option>
+            <option Value="Current">Current</option>
+        </select><br /><br />
+        Initial Amount  <input type="text" name="iamt" /><br /><br />
+
+
+        <p1 align="center"> <input type="submit" value="Generate Defaul Passowrd & Submit" /></p1>
+    </form>
+</body>
+</html>
